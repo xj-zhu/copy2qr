@@ -68,7 +68,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.type == 'show') {
     qrtext = request.data
     if (logo_src) {
-      console.log('show-1');
       makeCode(qrtext);
       sendResponse(1);
     }
@@ -77,12 +76,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
   }
   else if (request.type == 'logo') {
-    console.log('show-2');
     logo_src = request.data
     makeCode(qrtext);
     sendResponse(1);
   }
 });
-
-console.log('hello')
-

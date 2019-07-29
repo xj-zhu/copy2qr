@@ -20,7 +20,7 @@
 	"permissions": [
 		"contextMenus"
 	],
-	"homepage_url": "https://www.baidu.com",
+	"homepage_url": "https://github.com/xj-zhu/copy2qr",
 	"omnibox": {
 		"keyword": "QR"
 	},
