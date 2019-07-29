@@ -31,36 +31,47 @@ function makeCode(text) {
   ec.className = "qrcode";
   ec.ondblclick = hideQR;
   w = Math.min(300, Math.floor(text.length / 100) * 100 + 100)
-  console.log(text.length, w);
-  var qrcode = new QRCode(ec, {
-    width: w,
-    height: w,
-    text: text,
-    correctLevel: 1,
-    typeNumber: 1
-  });
-
+  // console.log(text.length, w);
   var ef = document.createElement("div");
   ef.id = "qrframe";
   ef.className = "qrframe";
   ef.ondblclick = hideQR;
-  ef.append(ec);
 
-  var ep = document.createElement("img");
-  ep.id = "qrpic";
-  ep.src = logo_src;
-  ep.width = w / 5
-  ep.height = w / 5
+  try {
+    var qrcode = new QRCode(ec, {
+      width: w,
+      height: w,
+      text: text,
+      correctLevel: 1,
+      typeNumber: 1
+    });
+    ef.append(ec);
 
-  var el = document.createElement("div");
-  el.id = "qrlogo";
-  el.className = "qrlogo";
-  el.ondblclick = hideQR;
-  el.append(ep);
-  ef.append(el);
+    var ep = document.createElement("img");
+    ep.id = "qrpic";
+    ep.src = logo_src;
+    ep.width = w / 5
+    ep.height = w / 5
 
+    var el = document.createElement("div");
+    el.id = "qrlogo";
+    el.className = "qrlogo";
+    el.ondblclick = hideQR;
+    el.append(ep);
+    ef.append(el);
+
+    ec.style.display = 'block';
+  }
+  catch (e) {
+    console.log('e.message:', e.message);
+    var ee = document.createElement("p");
+    ee.id = "qrerr";
+    ee.className = "qrerr";
+    ee.ondblclick = hideQR;
+    ee.innerText = '☹' + e.message;
+    ef.append(ee);
+  }
   board.appendChild(ef);
-  ec.style.display = 'block';
   eb.focus();
 }
 
@@ -72,7 +83,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       sendResponse(1);
     }
     else {
-      sendResponse({'type':'logo'});
+      sendResponse({ 'type': 'logo' });
     }
   }
   else if (request.type == 'logo') {

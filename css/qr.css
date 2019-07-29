@@ -36,7 +36,21 @@
 
 .qrlogo {
   display: flex;
+  user-select: none;
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+.qrerr {
+  display: flex;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 24px;
+  background-color: red;
+  color: yellow;
+  padding: 30px 10px;
+  border-radius: 10px;
 }
