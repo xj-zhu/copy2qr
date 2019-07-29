@@ -40,6 +40,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
+  border-radius: 10px;
 }
 
 .qrerr {
@@ -52,5 +53,6 @@
   background-color: red;
   color: yellow;
   padding: 30px 10px;
+  border: 1px solid yellow;
   border-radius: 10px;
 }
