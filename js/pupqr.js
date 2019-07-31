@@ -16,26 +16,31 @@ function hideQR() {
   if (e5) e5.parentNode.removeChild(e5);
 }
 
+function hookEvents(element) {
+  element.ondblclick = hideQR;
+  element.onmousewheel = function (s) { return false; }
+  element.onkeydown = function (k) { if (k.keyCode == 13 || k.keyCode == 100 || k.keyCode == 27) hideQR(); return false; }
+}
+
 function makeCode(text) {
-  var board = document.getElementsByTagName("body")[0];
+  var body = document.getElementsByTagName("body")[0];
   var eb = document.createElement("div");
   eb.id = "qrback";
   eb.className = "qrback";
   eb.tabIndex = -1;
-  eb.ondblclick = hideQR;
-  eb.onkeydown = function (k) { if (k.keyCode == 13 || k.keyCode == 100 || k.keyCode == 27) hideQR(); }
-  board.appendChild(eb);
+  hookEvents(eb);
+  body.appendChild(eb);
 
   var ec = document.createElement("div");
   ec.id = "qrcode";
   ec.className = "qrcode";
-  ec.ondblclick = hideQR;
+  hookEvents(ec);
   w = Math.min(300, Math.floor(text.length / 100) * 100 + 100)
   // console.log(text.length, w);
   var ef = document.createElement("div");
   ef.id = "qrframe";
   ef.className = "qrframe";
-  ef.ondblclick = hideQR;
+  hookEvents(ef);
 
   try {
     var qrcode = new QRCode(ec, {
@@ -57,6 +62,7 @@ function makeCode(text) {
     el.id = "qrlogo";
     el.className = "qrlogo";
     el.ondblclick = hideQR;
+    hookEvents(el);
     el.append(ep);
     ef.append(el);
 
@@ -71,7 +77,7 @@ function makeCode(text) {
     ee.innerText = '☹' + e.message;
     ef.append(ee);
   }
-  board.appendChild(ef);
+  body.appendChild(ef);
   eb.focus();
 }
 

@@ -1,27 +1,26 @@
 .qrback {
   display: block;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: black;
-  z-index: 1001;
+  z-index: 1000001;
   -moz-opacity: 0.8;
   opacity: .80;
-  filter: alpha(opacity=88);
 }
 
 .qrframe {
-  top: 0%;
-  left: 0%;
-  width: calc(100%);
-  height: calc(100%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  z-index: 1002;
+  position: fixed;
+  z-index: 1000002;
 }
 
 .qrcode {
@@ -31,7 +30,7 @@
   border: 1px solid skyblue;
   background-color: white;
   overflow: auto;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .qrlogo {
@@ -40,7 +39,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .qrerr {
@@ -54,5 +53,5 @@
   color: yellow;
   padding: 30px 10px;
   border: 1px solid yellow;
-  border-radius: 10px;
+  border-radius: 6px;
 }
