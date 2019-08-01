@@ -35,14 +35,13 @@ function makeCode(text) {
   ec.id = "qrcode";
   ec.className = "qrcode";
   hookEvents(ec);
-  w = Math.min(300, Math.floor(text.length / 100) * 100 + 100)
-  // console.log(text.length, w);
   var ef = document.createElement("div");
   ef.id = "qrframe";
   ef.className = "qrframe";
   hookEvents(ef);
 
   try {
+    w = Math.min(300, Math.floor(text.length / 100) * 100 + 100)
     var qrcode = new QRCode(ec, {
       width: w,
       height: w,
